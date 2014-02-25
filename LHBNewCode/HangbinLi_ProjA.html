@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Hangbin Li - Flying Bird</title>
+    <style type="text/css">
+        .other_part {
+            float: right;
+            width: 400px;
+            margin: 0 25px 0 0;
+            font-size: 13px;
+        }
+
+        .wind_speed_div {
+        }
+
+        .help_content_div {
+        }
+
+        .help_btn_div {
+        }
+    </style>
+</head>
+<body onload="main()">
+    <div class="interface">
+        <div class="other_part">
+            <div id="control_wind_div">
+                <table border="0">
+                    <tr>
+                        <td>
+                            <input type="button" name="speed_slower_btn" id="speed_slower_btn" onclick="changeWindSpeed(-1)" value="Left Wind (<-)" />
+                            <input type="button" name="speed_faster_btn" id="speed_faster_btn" onclick="changeWindSpeed(1)" value="Right Wind (->)" />
+                            <input type="button" name="speed_reset_btn" id="speed_reset_btn" onclick="changeWindSpeed(0)" value="Reset (/)" />
+                        </td>
+                        <td>
+                            <div id="wind_speed_div">Wind Speed: 0</div>
+                        </td>
+                    </tr>
+                </table>
+                <p>
+            </div>
+            <div>
+                Tree Number (CPU&GPU Heavy):
+                <span id='tree_num_span'>1</span> &nbsp;
+                <input id="tree_num_select" type="range" min="1" max="10" value="1" step="1" />
+                <p>
+            </div>
+            <div id="ground_type_div">
+                Groud Type:
+                <select id="ground_type_select">
+                    <option>Grassland</option>
+                    <option>Soil</option>
+                    <option>Water</option>
+                </select>
+                <p>
+            </div>
+            <div id="help_btn_div">
+                <input type="button" name="help_btn" id="help_btn" onclick="writeHelp2Html(1)" value=" Help (F1) " />
+                <input type="button" name="hide_help_btn" id="hide_help_btn" onclick="writeHelp2Html(0)" value="Hide Help (Esc)" /><p>
+                <p>
+            </div>
+            <div id="help_content_div"></div>
+        </div>
+        <canvas id="webgl" draggable="true" width="750" height="500">
+            Please use a browser that supports "canvas"
+        </canvas>
+    </div>
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="lib/cuon-matrix.js"></script>
+    <script src="HangbinLi_ProjA.js"></script>
+</body>
+</html>
