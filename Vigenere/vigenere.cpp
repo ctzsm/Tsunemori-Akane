@@ -1,8 +1,8 @@
 /*
  * Compile Information
  * Please compile this code with GNU g++ 4.6 or later versions.
- * For GNU g++ 4.7 and previous versions: g++ -o vigenere vigenere.cpp -std=c++0x
- * For GNU g++ 4.8: g++ -o vigenere vigenere.cpp -std=c++11
+ * Compile instruction: g++ -o vigenere vigenere.cpp -std=c++11
+ * Run: ./vigenere
  */
 
 #include <cstdio>
