@@ -25,7 +25,7 @@ object Solution {
 	def tswap(x: Int, k: Int, d: Int) {
 		if (x <= 0) return
 		val id = x - 1
-        val l = a(id).l
+		val l = a(id).l
 		val r = a(id).r
 		if (d % k == 0) {
 			a(id) = Node(r, l)
