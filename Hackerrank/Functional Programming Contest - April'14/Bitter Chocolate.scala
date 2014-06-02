@@ -22,22 +22,22 @@ object Solution {
 		if (memo(r1)(r2)(r3) != -1) {
 			return memo(r1)(r2)(r3)
 		}
-        var v = mutable.ArrayBuffer.fill(100)(false)
-        for (i <- 1 until r1) {
-        	v(dfs(i, math.min(i, r2), math.min(i, r3))) = true
-        }
-        for (i <- 0 until r2) {
-        	v(dfs(r1, i, math.min(i, r3))) = true
-        }
-        for (i <- 0 until r3) {
-        	v(dfs(r1, r2, i)) = true
-        }
-        for (i <- 0 until v.length) {
-        	if (!v(i)) {
-        		memo(r1)(r2)(r3) = i
-        		return memo(r1)(r2)(r3)
-        	}
-        }
-        return -1
+		var v = mutable.ArrayBuffer.fill(100)(false)
+		for (i <- 1 until r1) {
+			v(dfs(i, math.min(i, r2), math.min(i, r3))) = true
+		}
+		for (i <- 0 until r2) {
+			v(dfs(r1, i, math.min(i, r3))) = true
+		}
+		for (i <- 0 until r3) {
+			v(dfs(r1, r2, i)) = true
+		}
+		for (i <- 0 until v.length) {
+			if (!v(i)) {
+				memo(r1)(r2)(r3) = i
+				return memo(r1)(r2)(r3)
+			}
+		}
+		return -1
 	}
 }

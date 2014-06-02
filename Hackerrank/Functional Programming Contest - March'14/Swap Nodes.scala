@@ -3,9 +3,8 @@ import scala.collection.mutable
 import scala.math
 
 case class Node(
-  val l: Int,
-  val r: Int
-)
+	val l: Int,
+	val r: Int)
 object Solution {
 	val a: mutable.ArrayBuffer[Node] = mutable.ArrayBuffer[Node]()
 	def main(args: Array[String]) {
