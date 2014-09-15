@@ -23,6 +23,20 @@ private:
 			idx = parent(idx);
 		}
 	}
+	void down(int idx) {
+		while (idx < a.size()) {
+			int l = left(idx), r = right(idx), c = 0;
+			if (r < a.size()) {
+				c = a[r] > a[l] ? r : l;
+			} else if (l < a.size()) {
+				c = l;
+			}
+			if (c) {
+				std::swap(a[c], a[idx]);
+				idx = c;
+			} else break;
+		}
+	}
 	void debug() {
 		for (int i = 1; i < (int)a.size() - 1; ++i)
 			std::cout << a[i] << " ";
@@ -31,8 +45,8 @@ private:
 public:
 	heap(std::vector<T> _a):a(_a) {
 		a.insert(a.begin(), T(0)); // shift right
-		for (int i = a.size() - 1; i > a.size() / 2; --i) {
-			heapify(i);
+		for (int i = a.size() / 2; i > 0; --i) {
+			down(i);
 		}
 	}
 	void push(T x) {
@@ -45,30 +59,10 @@ public:
 			exit(1);
 		}
 		int idx = a.size() - 1;
-		std::swap(a[idx], a[1]);
-		T x = a[idx];
+		std::swap(a[1], a[idx]);
+		int x = a[idx];
 		a.pop_back();
-		if (empty()) {
-			return x;
-		}
-		idx = 1;
-		while (idx < a.size()) {
-			int id = idx;
-			T now = a[idx];
-			if (left(idx) < a.size() && now < a[left(idx)]) {
-				now = a[left(idx)];
-				id = left(idx);
-			}
-			if (right(idx) < a.size() && now < a[right(idx)]) {
-				now = a[right(idx)];
-				id = right(idx);
-			}
-			if (id == idx) break;
-			else {
-				std::swap(a[idx], a[id]);
-				idx = id;
-			}
-		}
+		down(1);
 		return x;
 	}
 	bool empty() {
