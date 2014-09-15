@@ -6,26 +6,17 @@ template<class T>
 class heap {
 private:
 	std::vector<T> a;
-	size_t parent(int idx) {
-		return (idx >> 1);
-	}
-	size_t left(int idx) {
-		return (idx << 1);
-	}
-	size_t right(int idx) {
-		return (idx << 1) + 1;
-	}
 	void heapify (int idx) {
 		while (idx > 1) {
-			if (a[parent(idx)] < a[idx])
-				std::swap(a[parent(idx)], a[idx]);
+			if (a[idx >> 1] < a[idx])
+				std::swap(a[idx >> 1], a[idx]);
 			else break;
-			idx = parent(idx);
+			idx >>= 1;
 		}
 	}
 	void down(int idx) {
 		while (idx < a.size()) {
-			int l = left(idx), r = right(idx), c = 0;
+			int l = idx << 1, r = idx << 1 | 1, c = 0;
 			if (r < a.size()) {
 				c = a[r] > a[l] ? r : l;
 			} else if (l < a.size()) {
