@@ -121,26 +121,26 @@ public:
 				grid[id1][id2] = grid[id2][id1] = true;
 			}
 		}
-        for (int i = 0; i < n - 1; ++i) {
-            for (int j = 0; j < m; ++j) {
-                int id1 = getId(board[i][j]) + 1;
-                int id2 = getId(board[i + 1][j]) + 1;
-                grid[id1][id2] = grid[id2][id1] = true;
-            }
-        }
+		for (int i = 0; i < n - 1; ++i) {
+			for (int j = 0; j < m; ++j) {
+				int id1 = getId(board[i][j]) + 1;
+				int id2 = getId(board[i + 1][j]) + 1;
+				grid[id1][id2] = grid[id2][id1] = true;
+			}
+		}
 		for (int i = 1; i <= 62; ++i) {
 			for (int j = 1; j <= 62; ++j) {
-                if (i == j) continue;
+				if (i == j) continue;
 				if (grid[i][j]) {
 					AddEdge(i << 1 | 1, j << 1, inf);
 					AddEdge(j << 1 | 1, i << 1, inf);
 				}
 			}
-        }
+		}
 
 		int s = 0, t = 1, N = 62 * 2 + 2;
-        memset(up, false, sizeof up);
-        memset(down, false, sizeof down);
+		memset(up, false, sizeof up);
+		memset(down, false, sizeof down);
 		for (int i = 0; i < m; ++i) {
 			up[getId(board[0][i])] = true;
 			down[getId(board[n - 1][i])] = true;
