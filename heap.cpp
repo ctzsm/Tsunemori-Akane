@@ -1,3 +1,5 @@
+#include <ctime>
+#include <cstdlib>
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -22,7 +24,7 @@ private:
 			} else if (l < a.size()) {
 				c = l;
 			}
-			if (c) {
+			if (c && a[idx] < a[c]) {
 				std::swap(a[c], a[idx]);
 				idx = c;
 			} else break;
@@ -62,18 +64,16 @@ public:
 	}
 };
 int main() {
-	std::vector<int> a;
-	a.push_back(5);
-	a.push_back(8);
-	a.push_back(-1);
-	a.push_back(9);
-	a.push_back(20);
-	a.push_back(40);
+	srand(time(NULL));
+	std::vector<int> a, b;
+	for (int i = 0; i < 100000; ++i) 
+		a.push_back(rand());
 	heap<int> h(a);
-	h.push(30);
-	h.push(-10);
-	while (!h.empty()) {
-		std::cout << h.pop() << std::endl;
-	}
+	for (int i = 0; i < 100000; ++i)
+		h.push(rand());
+	while (!h.empty())
+		b.push_back(h.pop());
+	std::reverse(b.begin(), b.end());
+	std::cout << is_sorted(b.begin(), b.end()) << std::endl;
 	return 0;
 }
